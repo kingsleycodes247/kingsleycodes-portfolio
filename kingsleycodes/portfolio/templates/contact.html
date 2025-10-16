@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="max-w-3xl mx-auto py-12">
+  <h1 class="text-2xl font-bold">Contact Me</h1>
+  <p class="mt-2">Email: <a href="mailto:kingsleycodes247@gmail.com" class="underline">kingsleycodes247@gmail.com</a> — Or use the form below.</p>
+
+  {% if success %}
+    <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded">Thank you! Your message was sent. I will reply shortly.</div>
+  {% endif %}
+
+  <form method="post" class="mt-6 space-y-4">
+    {% csrf_token %}
+    {{ form.name.label_tag }}<br>
+    {{ form.name }}
+    {{ form.email.label_tag }}<br>
+    {{ form.email }}
+    {{ form.message.label_tag }}<br>
+    {{ form.message }}
+    <div class="flex gap-3 mt-4">
+      <button type="submit" class="btn glow">Send Message</button>
+      <a href="{{ calendly_link }}" target="_blank" class="btn">Book a call</a>
+      <a href="https://wa.me/237680305815" target="_blank" class="btn">WhatsApp</a>
+    </div>
+  </form>
+
+  <div class="mt-10">
+    <h2 class="text-xl font-semibold">Other ways to reach me</h2>
+    <ul class="mt-3 space-y-2">
+      <li>Upwork: <a href="{{ upwork_link }}" target="_blank" class="underline">Hire on Upwork</a></li>
+      <li>Calendly: <a href="{{ calendly_link }}" target="_blank" class="underline">Schedule a call</a></li>
+      <li>GitHub: <a href="https://github.com/kingsleycodes247" target="_blank" class="underline">github.com/kingsleycodes247</a></li>
+    </ul>
+  </div>
+</section>
+{% endblock %}
