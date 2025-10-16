@@ -1,59 +1,47 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}About | Kingsley Codes{% endblock %}
+
 {% block content %}
-<section class="max-w-4xl mx-auto py-12">
-  <div class="grid md:grid-cols-2 gap-8 items-center">
-    <div>
-      <h1 class="text-3xl font-bold">Hi, I'm Kingsley Ofoma</h1>
-      <p class="mt-4 text-lg">Software, DevOps & Blockchain Engineer — 8+ years building scalable mobile, web, desktop and blockchain solutions. I design production-ready systems and beautiful UX.</p>
-
-      <div class="mt-6 space-y-3">
-        <a href="{{ upwork_link }}" class="btn glow">Hire Me on Upwork</a>
-        <a href="/static/Kingsley_Ofoma_CV.pdf" class="btn border">Download CV</a>
-        <a href="{{ calendly_link }}" target="_blank" class="btn">Book a Call</a>
-      </div>
+<section class="max-w-6xl mx-auto px-6 py-20 animate-fade-in">
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-white">About Me</h1>
+        <p class="text-gray-600 dark:text-gray-300 mt-3 max-w-2xl mx-auto">
+            I’m <span class="font-semibold text-indigo-600 dark:text-indigo-400">Kingsley Ofoma</span>, a Software, DevOps, and Blockchain Engineer with over 8 years of experience 
+            building robust systems and crafting future-ready digital solutions.
+        </p>
     </div>
 
-    <div class="space-y-4">
-      <img src="{% static 'images/hero_profile.png' %}" alt="Kingsley Ofoma" width="600" height="600" class="rounded-lg shadow-lg">
-      <p class="text-sm text-slate-500">Profile image - recommended size: 600x600px (square) — design in Canva and export as PNG/JPG.</p>
-    </div>
-  </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300">
+                I specialize in developing high-performance web, mobile, and blockchain applications that power modern businesses. 
+                With expertise in DevOps, I ensure continuous delivery, scalability, and reliability.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+                Beyond code, I’m passionate about UI/UX design, automation, and creative problem-solving — turning complex ideas into seamless, impactful products.
+            </p>
 
-  <div class="mt-12">
-    <h2 class="text-2xl font-semibold">What I do</h2>
-    <div class="grid md:grid-cols-3 gap-4 mt-4">
-      {% for s in services %}
-        <div class="p-4 rounded-lg border hover:shadow-lg">
-          <h3 class="font-semibold">{{ s.title }}</h3>
-          <p class="text-sm mt-2">{{ s.short_description }}</p>
-          <a href="#service-{{ s.slug }}" class="text-sm mt-3 inline-block underline">Read FAQ</a>
+            <div class="pt-4">
+                <a href="{% url 'projects' %}" class="btn-primary">View My Projects</a>
+            </div>
         </div>
-      {% endfor %}
-    </div>
-  </div>
 
-  <div class="mt-10">
-    <h2 class="text-2xl font-semibold">Services & FAQs</h2>
-    {% for s in services %}
-      <div id="service-{{ s.slug }}" class="mt-6 p-4 border rounded">
-        <h3 class="text-xl font-medium">{{ s.title }}</h3>
-        <p class="mt-2">{{ s.long_description }}</p>
-        {% if s.faqs.all %}
-          <div class="mt-4">
-            <h4 class="font-semibold">FAQs</h4>
-            <ul class="mt-2 space-y-2">
-              {% for faq in s.faqs.all %}
-                <li>
-                  <strong>{{ faq.question }}</strong>
-                  <div class="text-sm text-slate-600">{{ faq.answer }}</div>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
+        <div class="flex justify-center">
+            <img src="{% static 'images/about-profile.png' %}" alt="Kingsley Ofoma" class="rounded-2xl shadow-2xl w-80 h-80 object-cover">
+        </div>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="mt-16">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Core Skills</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for skill in skills %}
+            <div class="bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg rounded-xl p-6 text-center transition">
+                <h3 class="font-semibold text-indigo-600 dark:text-indigo-400">{{ skill }}</h3>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </section>
 {% endblock %}

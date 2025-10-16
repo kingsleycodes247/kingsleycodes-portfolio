@@ -1,0 +1,31 @@
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  line-height: 1.8;
+}
+
+a {
+  color: #6366f1;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+blockquote {
+  border-left: 4px solid #6366f1;
+  padding-left: 1rem;
+  color: #a5b4fc;
+  font-style: italic;
+}
+
+pre code {
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  display: block;
+  overflow-x: auto;
+}

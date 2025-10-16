@@ -1,20 +1,51 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}{{ blog.title }} | Kingsley Codes{% endblock %}
+
 {% block content %}
-<article class="max-w-3xl mx-auto py-12">
-  <h1 class="text-3xl font-bold">{{ blog.title }}</h1>
-  <p class="text-sm text-slate-500 mt-1">{{ blog.created_at|date:"F j, Y" }}</p>
+<section class="pt-28 pb-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-10">
+    
+    <!-- Blog Content -->
+    <article class="md:col-span-2 bg-white dark:bg-gray-800 rounded-2xl shadow p-8 animate-fade-in">
+      {% if blog.image %}
+      <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="rounded-2xl w-full h-72 object-cover mb-6">
+      {% endif %}
+      
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{{ blog.title }}</h1>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">By {{ blog.author }} — {{ blog.created_at|date:"M d, Y" }}</p>
 
-  {% if blog.image %}
-    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="mt-6 rounded-lg w-full h-auto" width="1200" height="700">
-  {% endif %}
+      <div class="prose dark:prose-invert max-w-none">
+        {{ blog.content|safe }}
+      </div>
+    </article>
 
-  <div class="prose dark:prose-invert mt-6 max-w-none">
-    {{ blog.content|safe }}
+    <!-- Sidebar -->
+    <aside class="space-y-6">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Recent Posts</h3>
+        <ul class="space-y-3">
+          {% for recent in blogs|slice:":5" %}
+          <li>
+            <a href="{% url 'blog_detail' recent.slug %}" class="text-indigo-600 dark:text-indigo-400 hover:underline">
+              {{ recent.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="bg-indigo-600 text-white rounded-2xl p-6 text-center">
+        <h3 class="text-xl font-semibold mb-2">Let's Collaborate</h3>
+        <p class="mb-4 text-indigo-100">Have a project or idea? Schedule a free consultation.</p>
+        <a href="https://calendly.com/kingsleycodes247/30min" target="_blank"
+          class="inline-block bg-white text-indigo-600 font-semibold px-5 py-2 rounded-lg hover:bg-indigo-100 transition">
+          Schedule a Call
+        </a>
+      </div>
+    </aside>
+
   </div>
-
-  <div class="mt-10">
-    <a href="{% url 'blog_list' %}" class="underline text-brand-600">← Back to Blog</a>
-  </div>
-</article>
+</section>
 {% endblock %}

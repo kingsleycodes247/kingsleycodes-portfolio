@@ -1,25 +1,24 @@
-# portfolio/management/commands/seed_data.py
 from django.core.management.base import BaseCommand
-from portfolio.models import Service, ServiceFAQ
+from portfolio.models import Service, FAQ, Project
 
 SERVICES = [
     {
-      'title': 'Mobile Development',
-      'short': 'Android, Kotlin, Java, React Native apps.',
-      'long': 'Native Android (Java/Kotlin) and cross-platform (React Native) mobile apps with payments and offline sync.',
-      'faqs': [
-        {'q': 'Do you build native apps?', 'a': 'Yes — Android using Java/Kotlin; I also work with React Native for cross-platform apps.'},
-        {'q': 'Can you integrate payments?', 'a': 'Yes — REST API integrations, stripe, mobile money and crypto payments.'},
-      ],
+        'title': 'Mobile Development',
+        'short': 'Android, Kotlin, Java, React Native apps.',
+        'long': 'Native Android (Java/Kotlin) and cross-platform (React Native) mobile apps with payments and offline sync.',
+        'faqs': [
+            {'q': 'Do you build native apps?', 'a': 'Yes — Android using Java/Kotlin; I also work with React Native for cross-platform apps.'},
+            {'q': 'Can you integrate payments?', 'a': 'Yes — REST API integrations, stripe, mobile money and crypto payments.'},
+        ],
     },
     {
-      'title': 'Web Development',
-      'short': 'Django, React, Angular, Node, REST APIs.',
-      'long': 'Full-stack web applications with Django backends and modern frontends (React/Next/Tailwind).',
-      'faqs': [
-        {'q': 'What stacks do you use?', 'a': 'Django REST, React, Angular, Node, Tailwind CSS, PostgreSQL.'},
-        {'q': 'Can you deploy to production?', 'a': 'Yes — I deploy to AWS, PythonAnywhere, Render, and servers with CI/CD.'},
-      ],
+        'title': 'Web Development',
+        'short': 'Django, React, Angular, Node, REST APIs.',
+        'long': 'Full-stack web applications with Django backends and modern frontends (React/Next/Tailwind).',
+        'faqs': [
+            {'q': 'What stacks do you use?', 'a': 'Django REST, React, Angular, Node, Tailwind CSS, PostgreSQL.'},
+            {'q': 'Can you deploy to production?', 'a': 'Yes — I deploy to AWS, PythonAnywhere, Render, and servers with CI/CD.'},
+        ],
     },
     {
       'title': 'Desktop Development',
@@ -79,32 +78,56 @@ SERVICES = [
     },
 ]
 
+PROJECTS = [
+    {
+        'title': 'Price Sentinel',
+        'description': 'Real-time crypto alert app built with Django, Celery, and Redis.',
+        'image': 'projects/price-sentinel.png',
+        'link': 'https://github.com/kingsleycodes247/price-sentinel'
+    },
+    {
+        'title': 'Akpa Wallet',
+        'description': 'Mobile fintech wallet with secure transactions built with Android and Spring Boot.',
+        'image': 'projects/akpa-wallet.png',
+        'link': 'https://github.com/kingsleycodes247/akpa-wallet'
+    },
+]
+
 class Command(BaseCommand):
-    help = 'Seed initial services and FAQs'
+    help = 'Seed or update services, FAQs, and projects data.'
 
     def handle(self, *args, **options):
-        for idx, s in enumerate(SERVICES):
-            service, created = Service.objects.get_or_create(
+        # ---- Seed or update services ----
+        for s in SERVICES:
+            service, created = Service.objects.update_or_create(
                 title=s['title'],
                 defaults={
-                    'short_description': s['short'],
-                    'long_description': s['long'],
-                    'order': idx
+                    'description': s['long'],
+                    'icon': 'fa-solid fa-code'
                 }
             )
-            if created:
-                self.stdout.write(self.style.SUCCESS(f'Created service: {service.title}'))
-            else:
-                service.short_description = s['short']
-                service.long_description = s['long']
-                service.order = idx
-                service.save()
-                self.stdout.write(self.style.NOTICE(f'Updated service: {service.title}'))
+            # Manage FAQs
+            FAQ.objects.filter(question__in=[f['q'] for f in s.get('faqs', [])]).delete()
+            for f in s.get('faqs', []):
+                FAQ.objects.update_or_create(
+                    question=f['q'],
+                    defaults={'answer': f['a']}
+                )
 
-            # add FAQs
-            ServiceFAQ.objects.filter(service=service).delete()  # reset
-            for fidx, faq in enumerate(s.get('faqs', [])):
-                ServiceFAQ.objects.create(service=service, question=faq['q'], answer=faq['a'], order=fidx)
-                self.stdout.write(self.style.SUCCESS(f'  added FAQ: {faq["q"]}'))
+            action = "Created" if created else "Updated"
+            self.stdout.write(self.style.SUCCESS(f'{action} service: {service.title}'))
 
-        self.stdout.write(self.style.SUCCESS('Seeding complete.'))
+        # ---- Seed or update projects ----
+        for p in PROJECTS:
+            project, created = Project.objects.update_or_create(
+                title=p['title'],
+                defaults={
+                    'description': p['description'],
+                    'image': p['image'],
+                    'link': p['link']
+                }
+            )
+            action = "Created" if created else "Updated"
+            self.stdout.write(self.style.SUCCESS(f'{action} project: {project.title}'))
+
+        self.stdout.write(self.style.SUCCESS("✅ Seeding complete (services, FAQs, projects)."))

@@ -19,13 +19,17 @@ def home(request):
 
 
 def about(request):
-    services = Service.objects.all()
-    context = {
-        'services': services,
-        'calendly_link': 'https://calendly.com/kingsleycodes247/30min',
-        'upwork_link': 'https://www.upwork.com/freelancers/~01217e81acabdbc9fa?mp_source=share',
-    }
-    return render(request, 'about.html', context)
+    skills = [
+        "Mobile Development",
+        "Web Development",
+        "DevOps & Cloud",
+        "Blockchain",
+        "AI & Automation",
+        "UI/UX Design",
+        "Digital Marketing",
+        "Technical Writing",
+    ]
+    return render(request, "about.html", {"skills": skills})
 
 
 def projects(request):
@@ -72,6 +76,9 @@ def contact(request):
         'calendly_link': 'https://calendly.com/kingsleycodes247/30min'
     })
 
+def services(request):
+    services = Service.objects.all()
+    return render(request, 'services.html', {'services': services})
 
 def blog_list(request):
     blogs = Blog.objects.order_by('-created_at')

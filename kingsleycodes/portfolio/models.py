@@ -1,46 +1,23 @@
 from django.db import models
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
-class Service(models.Model):
-    title = models.CharField(max_length=120, unique=True)
-    slug = models.SlugField(max_length=140, unique=True, blank=True)
-    short_description = models.CharField(max_length=255, blank=True)
-    long_description = models.TextField(blank=True)
-    order = models.PositiveIntegerField(default=0)
-    icon = models.CharField(max_length=200, blank=True, help_text='Optional icon class or path')
-    created_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        ordering = ['order', 'title']
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
-
-class ServiceFAQ(models.Model):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='faqs')
-    question = models.CharField(max_length=255)
-    answer = models.TextField()
-    order = models.PositiveIntegerField(default=0)
-
-    class Meta:
-        ordering = ['order']
-
-    def __str__(self):
-        return f"FAQ: {self.question} ({self.service.title})"
-    
-class Blog(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, blank=True)
-    image = models.ImageField(upload_to='blogs/', blank=True, null=True)
-    content = models.TextField()
+class TimestampedModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        abstract = True
+
+
+class Project(TimestampedModel):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, blank=True)
+    description = models.TextField()
+    image = models.ImageField(upload_to='projects/')
+    link = models.URLField(blank=True, null=True)
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -48,3 +25,59 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Blog(TimestampedModel):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, blank=True)
+    author = models.CharField(max_length=100, default="Kingsley Ofoma")
+
+    try:
+        from ckeditor.fields import RichTextField
+        content = RichTextField()
+    except ImportError:
+        content = models.TextField()
+
+    image = models.ImageField(upload_to='blogs/', blank=True, null=True)
+    is_published = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+
+
+class Service(TimestampedModel):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, blank=True)
+    description = models.TextField()
+    icon = models.CharField(max_length=100, help_text="e.g. lucide:shield or fa-solid fa-lock")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+
+class FAQ(TimestampedModel):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question
+
+
+class ContactMessage(TimestampedModel):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return f"Message from {self.name}"

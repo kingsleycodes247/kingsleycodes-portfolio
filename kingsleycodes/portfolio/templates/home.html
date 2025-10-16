@@ -1,42 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}Home | Kingsley Codes{% endblock %}
+
 {% block content %}
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-gradient-to-br from-indigo-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <div class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 py-24 gap-12">
+        
+        <!-- Left Text -->
+        <div class="flex-1 space-y-6 animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white">
+                Building <span class="text-indigo-600 dark:text-indigo-400">Scalable</span> &<br>
+                <span class="text-indigo-600 dark:text-indigo-400">Future-Ready</span> Systems
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+                I’m Kingsley Ofoma — a Software, DevOps, and Blockchain Engineer crafting high-performance solutions that empower businesses in the digital economy.
+            </p>
 
-<section class="min-h-[60vh] flex items-center">
-<div class="max-w-3xl">
-<h1 class="text-4xl md:text-6xl font-bold leading-tight">I build <span class="text-brand-500">scalable</span> systems — Mobile, Web & Blockchain</h1>
-<p class="mt-4 text-lg">Software, DevOps & Blockchain Engineer with 8+ years building production-grade apps and infrastructure.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="https://www.upwork.com/freelancers/~01217e81acabdbc9fa"
+                   target="_blank"
+                   class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-lg transition">
+                   Hire Me on Upwork
+                </a>
+                <a href="{% static 'files/Kingsley_Ofoma_CV.pdf' %}" 
+                   download
+                   class="border border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-900 px-6 py-3 rounded-lg font-medium transition">
+                   Download CV
+                </a>
+                <a href="https://calendly.com/kingsleycodes247/30min" 
+                   target="_blank"
+                   class="bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium transition">
+                   Schedule a Call
+                </a>
+            </div>
+        </div>
 
-
-<div class="mt-6 flex gap-3">
-<a href="https://www.upwork.com/freelancers/~01217e81acabdbc9fa?mp_source=share" target="_blank" class="px-4 py-2 rounded-md glow">Hire Me on Upwork</a>
-<a href="/static/Kingsley_Ofoma_CV.pdf" download class="px-4 py-2 rounded-md border">Download CV</a>
-<a href="#projects" class="px-4 py-2 rounded-md bg-slate-800 text-white">View Projects</a>
-</div>
-
-
-</div>
-<div class="ml-auto hidden md:block w-1/3">
-<!-- Placeholder for animated hero graphic -->
-<div id="hero-canvas" class="w-full h-64 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg"></div>
-</div>
+        <!-- Right Image -->
+        <div class="flex-1 relative animate-slide-up">
+            <img src="{% static 'images/hero-coding.png' %}" alt="Kingsley Codes Developer" class="w-full max-w-lg mx-auto rounded-2xl shadow-2xl">
+            <div class="absolute -top-10 -right-10 w-72 h-72 bg-indigo-300 dark:bg-indigo-800 opacity-20 blur-3xl rounded-full animate-pulse-slow"></div>
+        </div>
+    </div>
 </section>
 
-
-<section id="projects" class="mt-12">
-<h2 class="text-2xl font-semibold">Featured Projects</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-<!-- Repeat project cards -->
-<div class="p-4 rounded-lg border hover:scale-[1.02] transition-transform">
-<h3 class="font-semibold">Akpa Wallet</h3>
-<p class="mt-2 text-sm">Android fintech app. Java, Spring Boot, PostgreSQL.</p>
-<div class="mt-3 flex gap-2">
-<a href="#" class="text-sm underline">Live</a>
-<a href="#" class="text-sm underline">GitHub</a>
-</div>
-</div>
-
-
-</div>
+<!-- Parallax section -->
+<section class="py-20 bg-indigo-600 dark:bg-indigo-700 text-white text-center" data-parallax>
+    <h2 class="text-3xl font-bold mb-4">Let’s Build Something Amazing Together</h2>
+    <p class="text-lg mb-6">From apps to automation, your next big idea deserves a solid foundation.</p>
+    <a href="{% url 'contact' %}" class="bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg shadow hover:bg-indigo-100 transition">Get in Touch</a>
 </section>
 {% endblock %}

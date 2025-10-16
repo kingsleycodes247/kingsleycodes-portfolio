@@ -1,16 +1,35 @@
 from django.contrib import admin
-from .models import Service, ServiceFAQ, Blog
+from .models import Project, Blog, Service, FAQ, ContactMessage
 
-class ServiceFAQInline(admin.TabularInline):
-    model = ServiceFAQ
-    extra = 1
 
-@admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
-    inlines = [ServiceFAQInline]
-    list_display = ('title', 'order', 'created_at')
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at')
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at')
+    list_display = ('title', 'author', 'is_published', 'created_at')
+    list_filter = ('is_published',)
+    search_fields = ('title', 'author')
     prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'icon', 'created_at')
+    prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('question',)
+    search_fields = ('question',)
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'created_at')
+    search_fields = ('name', 'email')

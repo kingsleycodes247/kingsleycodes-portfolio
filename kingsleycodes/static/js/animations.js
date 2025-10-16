@@ -16,3 +16,25 @@ hero.style.background = `radial-gradient(circle at ${50 + Math.sin(t)*10}% ${50 
 }, 40);
 }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const fadeElements = document.querySelectorAll(".animate-fade-in");
+  fadeElements.forEach((el, i) => {
+    el.style.opacity = 0;
+    setTimeout(() => {
+      el.style.transition = "opacity 1s ease-in-out";
+      el.style.opacity = 1;
+    }, 300 * i);
+  });
+
+  const slideUpElements = document.querySelectorAll(".animate-slide-up");
+  slideUpElements.forEach((el, i) => {
+    el.style.transform = "translateY(50px)";
+    el.style.opacity = 0;
+    setTimeout(() => {
+      el.style.transition = "all 1s ease-out";
+      el.style.transform = "translateY(0)";
+      el.style.opacity = 1;
+    }, 400 * i);
+  });
+});
