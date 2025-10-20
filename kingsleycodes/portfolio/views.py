@@ -2,15 +2,17 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.conf import settings
-from .models import Blog, Service
+from .models import Blog, Project, Service
 from .forms import ContactForm
 
 
 def home(request):
-    services = Service.objects.all()[:6]
+    services = Service.objects.all()
+    projects = Project.objects.all()
     blogs = Blog.objects.order_by('-created_at')[:3]  # show latest blogs on homepage
     context = {
         'services': services,
+        'projects': projects,
         'blogs': blogs,
         'calendly_link': 'https://calendly.com/kingsleycodes247/30min',
         'upwork_link': 'https://www.upwork.com/freelancers/~01217e81acabdbc9fa?mp_source=share',
@@ -29,7 +31,8 @@ def about(request):
         "Digital Marketing",
         "Technical Writing",
     ]
-    return render(request, "about.html", {"skills": skills})
+    services = Service.objects.all()
+    return render(request, "about.html", {"skills": skills, "services": services})
 
 
 def projects(request):
@@ -79,6 +82,14 @@ def contact(request):
 def services(request):
     services = Service.objects.all()
     return render(request, 'services.html', {'services': services})
+
+def service_detail(request, slug):
+    service = get_object_or_404(Service, slug=slug)
+    other_services = Service.objects.exclude(id=service.id)
+    return render(request, 'service_detail.html', {
+        'service': service,
+        'other_services': other_services
+    })
 
 def blog_list(request):
     blogs = Blog.objects.order_by('-created_at')

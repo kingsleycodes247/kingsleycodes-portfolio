@@ -49,13 +49,14 @@ class Blog(TimestampedModel):
     def __str__(self):
         return self.title
 
-
-
+    
 class Service(TimestampedModel):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=150)
     slug = models.SlugField(unique=True, blank=True)
-    description = models.TextField()
-    icon = models.CharField(max_length=100, help_text="e.g. lucide:shield or fa-solid fa-lock")
+    short = models.CharField(max_length=255, default='brief description of the service')
+    long = models.TextField(default='description of the service')
+    icon = models.CharField(max_length=100, help_text="Use a Lucide icon name or FontAwesome icon class")
+    image = models.ImageField(upload_to='services/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
