@@ -46,17 +46,19 @@
         {{ service.long }}
       </p>
 
-      {% if service.features.all %}
-      <div class="grid sm:grid-cols-2 gap-6">
-        {% for feature in service.features.all %}
-        <div class="flex items-start gap-3">
-          <span class="flex-shrink-0 text-indigo-500 dark:text-indigo-400">
-            <i class="fas fa-check-circle"></i>
-          </span>
-          <p class="text-gray-700 dark:text-gray-300">{{ feature }}</p>
-        </div>
-        {% endfor %}
-      </div>
+     <!-- FAQ Section -->
+      {% if service.faqs %}
+        <section>
+          <h2 class="text-2xl font-semibold text-indigo-300 mb-4">FAQs</h2>
+          <div class="space-y-4">
+            {% for faq in service.faqs %}
+              <div class="p-4 rounded-lg bg-black/20 dark:bg-white/10 hover:bg-indigo-700/30 transition">
+                <p class="font-semibold text-indigo-200">Q: {{ faq.q }}</p>
+                <p class="text-gray-200 dark:text-gray-300">A: {{ faq.a }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
       {% endif %}
 
       <div class="mt-10">

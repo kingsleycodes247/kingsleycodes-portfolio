@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Blog, Service, FAQ, ContactMessage
+from .models import Project, Blog, Service, ContactMessage
 
 
 @admin.register(Project)
@@ -21,12 +21,6 @@ class BlogAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('title', 'icon', 'created_at')
     prepopulated_fields = {'slug': ('title',)}
-
-
-@admin.register(FAQ)
-class FAQAdmin(admin.ModelAdmin):
-    list_display = ('question',)
-    search_fields = ('question',)
 
 
 @admin.register(ContactMessage)

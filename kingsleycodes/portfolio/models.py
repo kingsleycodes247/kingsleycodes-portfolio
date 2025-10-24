@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+import json
 
 
 class TimestampedModel(models.Model):
@@ -33,7 +34,6 @@ class Blog(TimestampedModel):
     author = models.CharField(max_length=100, default="Kingsley Ofoma")
 
     try:
-        from ckeditor.fields import RichTextField
         content = RichTextField()
     except ImportError:
         content = models.TextField()
@@ -49,7 +49,7 @@ class Blog(TimestampedModel):
     def __str__(self):
         return self.title
 
-    
+
 class Service(TimestampedModel):
     title = models.CharField(max_length=150)
     slug = models.SlugField(unique=True, blank=True)
@@ -57,6 +57,7 @@ class Service(TimestampedModel):
     long = models.TextField(default='description of the service')
     icon = models.CharField(max_length=100, help_text="Use a Lucide icon name or FontAwesome icon class")
     image = models.ImageField(upload_to='services/', blank=True, null=True)
+    faqs = models.JSONField(default=list, blank=True)  # ✅ Added to hold FAQs as a list of dicts
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -65,15 +66,6 @@ class Service(TimestampedModel):
 
     def __str__(self):
         return self.title
-
-
-class FAQ(TimestampedModel):
-    question = models.CharField(max_length=255)
-    answer = models.TextField()
-
-    def __str__(self):
-        return self.question
-
 
 class ContactMessage(TimestampedModel):
     name = models.CharField(max_length=100)

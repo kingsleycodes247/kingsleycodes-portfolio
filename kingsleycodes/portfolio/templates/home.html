@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Building scalable, intelligent systems. | KingsleyCodes ⚡{% endblock %}
+{% block title %}Building Scalable, Intelligent Systems | KingsleyCodes ⚡{% endblock %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
         One Line of Code at a Time
       </h1>
       <p class="text-gray-300 text-lg max-w-xl">
-        I’m <strong>Kingsley Ofoma</strong> — building scalable, intelligent, and secure systems that power the digital world.
+        I’m <strong>Kingsley Ofoma</strong> — a Software, DevOps & Blockchain Engineer Building Scalable, Intelligent, and Secure Systems That Power The Digital World.
       </p>
       <div class="flex flex-wrap gap-4">
         <a href="https://www.upwork.com/freelancers/~01217e81acabdbc9fa" target="_blank"
@@ -27,35 +27,127 @@
       </div>
     </div>
     <div class="flex-1 relative">
-      <img src="{% static 'images/hero-coding.png' %}" class="rounded-2xl shadow-2xl relative z-10" alt="Coding illustration">
+      <img src="{% static 'images/hero/hero-profile.webp' %}" data-aos="fade-right" data-aos-delay="100" class="rounded-2xl shadow-2xl relative z-10" alt="Coding illustration">
       <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-700 opacity-30 blur-3xl animate-pulse-slow rounded-full"></div>
     </div>
   </div>
 </section>
 
+
+<section id="intro" class="relative py-28 bg-white dark:bg-gray-900 overflow-hidden">
+  <!-- Moving gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-transparent dark:from-indigo-800/10 dark:via-violet-800/10 animate-gradient-x"></div>
+
+  <!-- Glow elements -->
+  <div class="absolute top-10 right-10 w-48 h-48 bg-violet-500/30 rounded-full blur-3xl animate-glow-slow"></div>
+  <div class="absolute bottom-10 left-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-extrabold text-gray-800 dark:text-gray-100 mb-6">
+      Innovation Meets Execution
+    </h2>
+    <p data-aos="fade-up" data-aos-delay="100" class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
+      At Kingsley Codes, we blend creativity, strategy, and technology to craft solutions that deliver measurable results.
+      Whether it’s <span class="font-semibold text-indigo-600 dark:text-indigo-400">design, development, or strategy</span>,
+      we build with precision and purpose.
+    </p>
+
+    <div class="mt-10 flex justify-center" data-aos="fade-up" data-aos-delay="200">
+      <a href="#services" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-full shadow-lg transition transform hover:scale-105">
+        Explore Services
+      </a>
+    </div>
+  </div>
+</section>
+
+
 <!-- Glowing Orbs -->
 <div class="absolute top-40 left-10 w-48 h-48 bg-violet-600 opacity-30 blur-3xl rounded-full animate-glow-slow"></div>
 <div class="absolute bottom-20 right-10 w-72 h-72 bg-indigo-500 opacity-25 blur-3xl rounded-full animate-glow-slow"></div>
 
-<!-- Services Section -->
-<section class="relative bg-gray-950 text-gray-100 py-24">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-12">Services</h2>
-    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10">
+<section id="services" class="relative py-20 bg-white dark:bg-gray-900 overflow-hidden">
+  <!-- Background Glow Orbs -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/3 left-10 w-40 h-40 bg-indigo-500 opacity-20 blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-0 right-16 w-60 h-60 bg-violet-600 opacity-10 blur-3xl animate-glow-slow"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-extrabold text-center text-gray-800 dark:text-gray-100 mb-10">
+      Our Services
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Service Card -->
       {% for service in services %}
-      <a href="{% url 'service_detail' service.slug %}"
-         class="group bg-gradient-to-br from-gray-800 to-gray-900 hover:from-indigo-900 hover:to-violet-900 transition-all duration-300 rounded-2xl p-6 border border-gray-700 hover:border-indigo-500 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 group-hover:opacity-30 transition-all bg-gradient-to-tr from-indigo-600 via-violet-600 to-transparent blur-2xl"></div>
-        <div class="relative z-10 flex flex-col items-start space-y-3">
-          <i data-lucide="{{ service.icon }}" class="text-indigo-400 h-10 w-10"></i>
-          <h3 class="text-xl font-semibold">{{ service.title }}</h3>
-          <p class="text-gray-400 text-sm">{{ service.short }}</p>
-        </div>
-      </a>
+      <div
+        data-aos="zoom-in"
+        data-aos-delay="{{ forloop.counter0|add:100 }}"
+        class="bg-gray-50 dark:bg-gray-800/70 hover:bg-indigo-50 dark:hover:bg-gray-700/80 transition-all rounded-2xl p-6 shadow-lg hover:shadow-indigo-500/20 border border-gray-200 dark:border-gray-700">
+        <i class="{{ service.icon }} text-3xl text-indigo-600 dark:text-indigo-400 mb-4"></i>
+        <img src="{{ service.image }}" alt="{{ service.title }}" class="w-16 h-16 mx-auto mb-4 rounded-xl shadow-md object-cover">  
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">{{ service.title }}</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+          {{ service.short }}
+        </p>
+        <a href="{% url 'service_detail' service.slug %}" class="mt-4 inline-block text-indigo-600 dark:text-indigo-400 hover:underline font-medium">Learn More →</a>
+      </div>
       {% endfor %}
     </div>
   </div>
 </section>
+
+
+<!-- Step-to-Action Section -->
+<section class="relative bg-gradient-to-b from-gray-900 via-gray-950 to-gray-900 text-gray-100 py-24 overflow-hidden">
+  <!-- Floating Glows -->
+  <div class="absolute -top-10 left-10 w-48 h-48 bg-indigo-600 opacity-25 blur-3xl rounded-full animate-glow-slow"></div>
+  <div class="absolute bottom-10 right-10 w-72 h-72 bg-violet-600 opacity-20 blur-3xl rounded-full animate-glow-slow"></div>
+
+  <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">
+      My Work Process
+    </h2>
+    <p class="max-w-2xl mx-auto text-gray-400 mb-16" data-aos="fade-up" data-aos-delay="100">
+      From concept to deployment, each phase is guided by clarity, collaboration, and a commitment to excellence.
+    </p>
+
+    <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-12">
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center text-center space-y-4" data-aos="zoom-in" data-aos-delay="0">
+        <img src="{% static 'images/step1-discover.png' %}" alt="Discovery"
+             class="w-32 h-32 object-contain mx-auto drop-shadow-glow">
+        <h3 class="text-xl font-semibold">1. Discovery</h3>
+        <p class="text-gray-400 text-sm">Understand your goals, target audience, and project vision to define success clearly.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center text-center space-y-4" data-aos="zoom-in" data-aos-delay="150">
+        <img src="{% static 'images/step2-design.png' %}" alt="Design"
+             class="w-32 h-32 object-contain mx-auto drop-shadow-glow">
+        <h3 class="text-xl font-semibold">2. Design</h3>
+        <p class="text-gray-400 text-sm">Craft clean, intuitive, and visually engaging interfaces optimized for all devices.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center text-center space-y-4" data-aos="zoom-in" data-aos-delay="300">
+        <img src="{% static 'images/step3-develop.png' %}" alt="Development"
+             class="w-32 h-32 object-contain mx-auto drop-shadow-glow">
+        <h3 class="text-xl font-semibold">3. Development</h3>
+        <p class="text-gray-400 text-sm">Build robust, scalable systems with modern frameworks and automation tools.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flex flex-col items-center text-center space-y-4" data-aos="zoom-in" data-aos-delay="450">
+        <img src="{% static 'images/step4-deploy.png' %}" alt="Deployment"
+             class="w-32 h-32 object-contain mx-auto drop-shadow-glow">
+        <h3 class="text-xl font-semibold">4. Deployment</h3>
+        <p class="text-gray-400 text-sm">Deploy to cloud platforms with CI/CD pipelines and continuous performance monitoring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Projects -->
 <section class="bg-gradient-to-b from-gray-950 to-gray-900 py-24 text-white">
@@ -64,6 +156,7 @@
     <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10">
       {% for project in projects %}
       <div class="rounded-2xl bg-gray-800 hover:bg-indigo-900 transition p-6 border border-gray-700 hover:border-indigo-400">
+        <img src="{{ service.image }}" alt="{{ service.title }}" class="w-16 h-16 mx-auto mb-4 rounded-xl shadow-md object-cover">
         <h3 class="text-xl font-semibold mb-2">{{ project.title }}</h3>
         <p class="text-gray-400 text-sm mb-4">{{ project.description }}</p>
         <p class="text-indigo-400 text-xs font-mono">{{ project.tech_stack }}</p>
@@ -73,10 +166,12 @@
   </div>
 </section>
 
+
+
 <!-- Blog -->
 <section class="bg-gray-950 py-24 text-white">
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-12">Latest Insights</h2>
+    <h2 class="text-4xl font-bold text-center mb-12">Latest Blog Insights</h2>
     <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10">
       {% for blog in blogs %}
       <div class="rounded-2xl bg-gray-800 hover:bg-violet-900 transition p-6 border border-gray-700 hover:border-violet-400">
@@ -87,5 +182,27 @@
     </div>
   </div>
 </section>
+
+<section id="cta" class="relative py-20 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-center text-white overflow-hidden">
+  <!-- Floating glow orb -->
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6" data-aos="fade-up">
+    <h2 class="text-4xl font-extrabold mb-6 tracking-tight">Ready to Build Something Extraordinary?</h2>
+    <p class="text-lg mb-8 text-indigo-100">Let’s turn your ideas into digital experiences that inspire, engage, and convert.</p>
+
+    <div class="flex justify-center space-x-4">
+      <a href="mailto:kingsleycodes247@gmail.com"
+         class="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-indigo-50 transition transform hover:scale-105">
+        Contact Me
+      </a>
+      <a href="https://calendly.com/kingsleycodes247/30min" target="_blank"
+         class="bg-transparent border border-white text-white px-6 py-3 rounded-full shadow-lg hover:bg-white hover:text-indigo-700 transition transform hover:scale-105">
+        Schedule a Call
+      </a>
+    </div>
+  </div>
+</section>
+
 
 {% endblock %}

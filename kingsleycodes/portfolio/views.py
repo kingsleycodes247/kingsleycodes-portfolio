@@ -21,36 +21,13 @@ def home(request):
 
 
 def about(request):
-    skills = [
-        "Mobile Development",
-        "Web Development",
-        "DevOps & Cloud",
-        "Blockchain",
-        "AI & Automation",
-        "UI/UX Design",
-        "Digital Marketing",
-        "Technical Writing",
-    ]
     services = Service.objects.all()
-    return render(request, "about.html", {"skills": skills, "services": services})
+    return render(request, "about.html", {"services": services})
 
 
 def projects(request):
-    projects = [
-        {
-            'title': 'Price Sentinel',
-            'summary': 'Real-time crypto alert app (Django + Celery + Redis).',
-            'image': 'projects/price-sentinel.png',
-            'stack': ['Django', 'Celery', 'Redis', 'Tailwind']
-        },
-        {
-            'title': 'Akpa Wallet',
-            'summary': 'Mobile fintech wallet with secure transactions (Android + Spring Boot).',
-            'image': 'projects/akpa-wallet.png',
-            'stack': ['Android', 'Java', 'Spring Boot']
-        },
-    ]
-    context = {'projects': projects, 'calendly_link': 'https://calendly.com/kingsleycodes247/30min'}
+    projects = Project.objects.all()
+    context = {'projects': projects}
     return render(request, 'projects.html', context)
 
 

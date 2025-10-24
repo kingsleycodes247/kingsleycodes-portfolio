@@ -38,16 +38,78 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {% for service in services %}
             <a href="{% url 'service_detail' service.slug %}"
-               class="bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg rounded-xl p-6 text-center transition transform hover:-translate-y-1 hover:scale-105 duration-500 fade-in-up">
-                <i data-lucide="{{ service.icon }}" class="text-indigo-500 h-10 w-10 mb-4"></i>
-                <h3 class="font-semibold text-indigo-600 dark:text-indigo-400">{{ service.title }}</h3>
-            <div class="bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg rounded-xl p-6 text-center transition transform hover:-translate-y-1 hover:scale-105 duration-500 fade-in-up">
-                <h3 class="font-semibold text-indigo-600 dark:text-indigo-400">{{ skill }}</h3>
-            </div>
+            class="group bg-gradient-to-br from-gray-800 to-gray-900 hover:from-indigo-900 hover:to-violet-900 transition-all duration-300 rounded-2xl p-6 border border-gray-700 hover:border-indigo-500 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 group-hover:opacity-30 transition-all bg-gradient-to-tr from-indigo-600 via-violet-600 to-transparent blur-2xl"></div>
+                <div class="relative z-10 flex flex-col items-start space-y-3">
+                  <i data-lucide="{{ service.icon }}" class="text-indigo-400 h-10 w-10"></i>
+                  <h3 class="text-xl font-semibold">{{ service.title }}</h3>
+                  <p class="text-gray-400 text-sm">{{ service.short }}</p>
+                </div>
+              </a>
             {% endfor %}
         </div>
     </div>
 </section>
+
+<!-- Action Process Section -->
+<section class="bg-gradient-to-b from-gray-950 to-gray-900 text-gray-100 py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">My Action Process</h2>
+    <div class="space-y-16">
+      <!-- Phase 1 -->
+      <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+        <img src="{% static 'images/process1-collaboration.png' %}" alt="Collaboration"
+             class="w-48 h-48 object-contain drop-shadow-glow">
+        <div class="flex-1">
+          <h3 class="text-2xl font-semibold mb-3">1. Collaboration First</h3>
+          <p class="text-gray-400">
+            Every successful project starts with understanding — not just requirements, but your vision and audience. 
+            I engage deeply to align goals and create clarity before writing a single line of code.
+          </p>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+        <img src="{% static 'images/process2-prototype.png' %}" alt="Prototyping"
+             class="w-48 h-48 object-contain drop-shadow-glow">
+        <div class="flex-1">
+          <h3 class="text-2xl font-semibold mb-3">2. Prototype & Iterate</h3>
+          <p class="text-gray-400">
+            Using modern design tools and rapid prototyping, I transform ideas into tangible, testable concepts — 
+            ensuring alignment with user expectations before full development begins.
+          </p>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+        <img src="{% static 'images/process3-execute.png' %}" alt="Execution"
+             class="w-48 h-48 object-contain drop-shadow-glow">
+        <div class="flex-1">
+          <h3 class="text-2xl font-semibold mb-3">3. Execute with Precision</h3>
+          <p class="text-gray-400">
+            Clean, maintainable code, optimized performance, and reliable architecture — 
+            every line is built for scalability, performance, and long-term maintainability.
+          </p>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+        <img src="{% static 'images/process4-grow.png' %}" alt="Growth"
+             class="w-48 h-48 object-contain drop-shadow-glow">
+        <div class="flex-1">
+          <h3 class="text-2xl font-semibold mb-3">4. Continuous Growth</h3>
+          <p class="text-gray-400">
+            After deployment, I monitor, optimize, and evolve systems — because real engineering means iteration and continuous improvement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
