@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="flex-1 relative">
-      <img src="{% static 'images/hero/hero-profile.webp' %}" data-aos="fade-right" data-aos-delay="100" class="rounded-2xl shadow-2xl relative z-10" alt="Coding illustration">
+      <img src="{% static 'images/hero/trans-profile2.png' %}" data-aos="fade-right" data-aos-delay="100" class="rounded-2xl shadow-2xl relative z-10" alt="Coding illustration">
       <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-700 opacity-30 blur-3xl animate-pulse-slow rounded-full"></div>
     </div>
   </div>
@@ -47,9 +47,9 @@
       Innovation Meets Execution
     </h2>
     <p data-aos="fade-up" data-aos-delay="100" class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
-      At Kingsley Codes, we blend creativity, strategy, and technology to craft solutions that deliver measurable results.
+      At Kingsley Codes, I blend creativity, strategy, and technology to craft solutions that deliver measurable results.
       Whether it’s <span class="font-semibold text-indigo-600 dark:text-indigo-400">design, development, or strategy</span>,
-      we build with precision and purpose.
+      I build with precision and purpose.
     </p>
 
     <div class="mt-10 flex justify-center" data-aos="fade-up" data-aos-delay="200">
@@ -74,7 +74,7 @@
 
   <div class="relative z-10 max-w-6xl mx-auto px-6">
     <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-extrabold text-center text-gray-800 dark:text-gray-100 mb-10">
-      Our Services
+      My Services
     </h2>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -85,12 +85,12 @@
         data-aos-delay="{{ forloop.counter0|add:100 }}"
         class="bg-gray-50 dark:bg-gray-800/70 hover:bg-indigo-50 dark:hover:bg-gray-700/80 transition-all rounded-2xl p-6 shadow-lg hover:shadow-indigo-500/20 border border-gray-200 dark:border-gray-700">
         <i class="{{ service.icon }} text-3xl text-indigo-600 dark:text-indigo-400 mb-4"></i>
-        <img src="{{ service.image }}" alt="{{ service.title }}" class="w-16 h-16 mx-auto mb-4 rounded-xl shadow-md object-cover">  
+        <img src="{% static service.image %}" alt="{{ service.title }}" loading="lazy" class="w-full h-56 mx-auto mb-4 rounded-xl shadow-md object-cover">  
         <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">{{ service.title }}</h3>
         <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
           {{ service.short }}
         </p>
-        <a href="{% url 'service_detail' service.slug %}" class="mt-4 inline-block text-indigo-600 dark:text-indigo-400 hover:underline font-medium">Learn More →</a>
+        <a href="{% url 'service_detail' service.slug %}" class="mt-4 px-3 py-3 inline-block bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-lg transition transform hover:scale-105 font-medium">Learn More →</a>
       </div>
       {% endfor %}
     </div>
@@ -108,60 +108,94 @@
     <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">
       My Work Process
     </h2>
-    <p class="max-w-2xl mx-auto text-gray-400 mb-16" data-aos="fade-up" data-aos-delay="100">
+    <p class="max-w-2xl mx-auto text-white dark:text-gray-400 mb-16" data-aos="fade-up" data-aos-delay="100">
       From concept to deployment, each phase is guided by clarity, collaboration, and a commitment to excellence.
     </p>
 
     <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-12">
       <!-- Step 1 -->
       <div class="flex flex-col items-center text-center space-y-4" data-aos="zoom-in" data-aos-delay="0">
-        <img src="{% static 'images/step1-discover.png' %}" alt="Discovery"
-             class="w-32 h-32 object-contain mx-auto drop-shadow-glow">
+        <img src="{% static 'images/hero/discovery.webp' %}" alt="Discovery" loading="lazy"
+             class="w-32 h-32 object-contain rounded-full mx-auto drop-shadow-glow">
         <h3 class="text-xl font-semibold">1. Discovery</h3>
-        <p class="text-gray-400 text-sm">Understand your goals, target audience, and project vision to define success clearly.</p>
+        <p class="text-white dark:text-gray-400 text-sm">Understand your goals, target audience, and project vision to define success clearly.</p>
       </div>
 
       <!-- Step 2 -->
       <div class="flex flex-col items-center text-center space-y-4" data-aos="zoom-in" data-aos-delay="150">
-        <img src="{% static 'images/step2-design.png' %}" alt="Design"
-             class="w-32 h-32 object-contain mx-auto drop-shadow-glow">
+        <img src="{% static 'images/hero/design.webp' %}" alt="Design" loading="lazy"
+             class="w-32 h-32 object-contain rounded-full mx-auto drop-shadow-glow">
         <h3 class="text-xl font-semibold">2. Design</h3>
-        <p class="text-gray-400 text-sm">Craft clean, intuitive, and visually engaging interfaces optimized for all devices.</p>
+        <p class="text-white dark:text-gray-400 text-sm">Craft clean, intuitive, and visually engaging interfaces optimized for all devices.</p>
       </div>
 
       <!-- Step 3 -->
       <div class="flex flex-col items-center text-center space-y-4" data-aos="zoom-in" data-aos-delay="300">
-        <img src="{% static 'images/step3-develop.png' %}" alt="Development"
-             class="w-32 h-32 object-contain mx-auto drop-shadow-glow">
+        <img src="{% static 'images/hero/development.webp' %}" alt="Development" loading="lazy"
+             class="w-32 h-32 object-contain rounded-full mx-auto drop-shadow-glow">
         <h3 class="text-xl font-semibold">3. Development</h3>
-        <p class="text-gray-400 text-sm">Build robust, scalable systems with modern frameworks and automation tools.</p>
+        <p class="text-white dark:text-gray-400 text-sm">Build robust, scalable systems with modern frameworks and automation tools.</p>
       </div>
 
       <!-- Step 4 -->
       <div class="flex flex-col items-center text-center space-y-4" data-aos="zoom-in" data-aos-delay="450">
-        <img src="{% static 'images/step4-deploy.png' %}" alt="Deployment"
-             class="w-32 h-32 object-contain mx-auto drop-shadow-glow">
+        <img src="{% static 'images/hero/deployment.webp' %}" alt="Deployment" loading="lazy"
+             class="w-32 h-32 object-contain rounded-full mx-auto drop-shadow-glow">
         <h3 class="text-xl font-semibold">4. Deployment</h3>
-        <p class="text-gray-400 text-sm">Deploy to cloud platforms with CI/CD pipelines and continuous performance monitoring.</p>
+        <p class="text-white dark:text-gray-400 text-sm">Deploy to cloud platforms with CI/CD pipelines and continuous performance monitoring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack Section -->
+<section id="tech-stack" class="relative bg-gray-950 dark:bg-gray-900 py-20 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/10 via-violet-600/10 to-transparent animate-gradient-x"></div>
+
+  <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <h2 class="text-4xl font-bold text-white dark:text-gray-100 mb-12" data-aos="fade-up">
+      Tech Stack I Work With
+    </h2>
+
+    <div class="overflow-hidden relative">
+      <div class="flex space-x-16 animate-marquee">
+        {% include 'tech_icons.html' %}
+        {% include 'tech_icons.html' %} <!-- duplicate for seamless loop -->
       </div>
     </div>
   </div>
 </section>
 
 
+
 <!-- Projects -->
 <section class="bg-gradient-to-b from-gray-950 to-gray-900 py-24 text-white">
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
-    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10">
-      {% for project in projects %}
-      <div class="rounded-2xl bg-gray-800 hover:bg-indigo-900 transition p-6 border border-gray-700 hover:border-indigo-400">
-        <img src="{{ service.image }}" alt="{{ service.title }}" class="w-16 h-16 mx-auto mb-4 rounded-xl shadow-md object-cover">
-        <h3 class="text-xl font-semibold mb-2">{{ project.title }}</h3>
-        <p class="text-gray-400 text-sm mb-4">{{ project.description }}</p>
-        <p class="text-indigo-400 text-xs font-mono">{{ project.tech_stack }}</p>
+    <h2 class="text-indigo-700 dark:text-white text-4xl font-bold text-center mb-12" data-aos="fade-up">Recent Projects</h2>
+    
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10" data-aos="fade-up" data-aos-delay="100">
+      {% for project in projects|slice:":3" %}
+      <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in">
+        <img src="{% static project.image %}" alt="{{ project.title }}" loading="lazy" class="w-full h-56 mx-auto mb-4 rounded-xl shadow-md object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ project.title }}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{{ project.description }}</p>
+          <a href="{{ project.link }}" target="_blank" 
+             class="mt-5 bg-transparent border text-center border-indigo-700 text-indigo-700 dark:border-white dark:text-white px-3 py-3 
+             block shadow-lg hover:bg-indigo-500 hover:text-white dark:hover:bg-white dark:hover:text-indigo-700 transition transform hover:scale-105 font-medium">
+             View Project →
+          </a>
+        </div>
       </div>
       {% endfor %}
+    </div>
+
+    <!-- View All Button -->
+    <div class="flex justify-center mt-12" data-aos="fade-up" data-aos-delay="200">
+      <a href="{% url 'projects' %}" 
+         class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition transform hover:scale-105">
+         View All Projects
+      </a>
     </div>
   </div>
 </section>

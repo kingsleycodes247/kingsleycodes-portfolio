@@ -18,6 +18,7 @@ class Command(BaseCommand):
                     "each solution is crafted for speed, security, and performance. My apps support offline caching, real-time notifications, "
                     "API integrations, and seamless payment systems (Stripe, Mobile Money, Crypto)."
                 ),
+                'icon': 'fas fa-mobile-alt',
                 'image': 'images/services/mobile.webp',
                 'faqs': [
                     {"q": "Do you build for iOS too?", "a": "While I primarily build for Android, I also create cross-platform apps using React Native that run on both iOS and Android."},
@@ -35,6 +36,7 @@ class Command(BaseCommand):
                     "From landing pages to enterprise systems, I build web applications using modern frameworks like Django, React, and Tailwind CSS. "
                     "My solutions are scalable, secure, and optimized for SEO and speed — perfect for startups, SaaS platforms, or e-commerce."
                 ),
+                'icon': 'fas fa-laptop-code',
                 'image': 'images/services/web.webp',
                 'faqs': [
                     {"q": "Do you build APIs too?", "a": "Yes — I build REST and GraphQL APIs with Django REST Framework and integrate them with modern frontends."},
@@ -52,6 +54,7 @@ class Command(BaseCommand):
                     "I automate deployments, monitor systems, and containerize applications using Docker and CI/CD pipelines. "
                     "From startup MVPs to enterprise clusters, I design cloud environments that scale effortlessly while maintaining cost efficiency."
                 ),
+                'icon': 'fas fa-cloud',
                 'image': 'images/services/devops.webp',
                 'faqs': [
                     {"q": "Do you set up CI/CD?", "a": "Yes — I use GitHub Actions, Jenkins, or GitLab CI for automated deployments."},
@@ -70,6 +73,7 @@ class Command(BaseCommand):
                     "From Solana token creation to secure wallet integrations and crypto payment gateways, "
                     "I build decentralized apps and backend systems with strong encryption and Web3 standards."
                 ),
+                'icon': 'fas fa-cube',
                 'image': 'images/services/blockchain.webp',
                 'faqs': [
                     {"q": "Do you develop smart contracts?", "a": "Yes — primarily on Solana, with experience in Ethereum (Solidity)."},
@@ -88,6 +92,7 @@ class Command(BaseCommand):
                     "from minimalist logos and 3D intros to motion reels that stop the scroll. Every design is guided by strategy, "
                     "color psychology, and emotion-driven branding that converts."
                 ),
+                'icon': 'fas fa-paint-brush',
                 'image': 'images/services/creative.webp',
                 'faqs': [
                     {"q": "Do you design animated reels?", "a": "Yes, short-form motion graphics optimized for social media."},
@@ -102,6 +107,7 @@ class Command(BaseCommand):
                     "I write clear, structured, and technically accurate documentation — from software guides to research reports. "
                     "Each piece blends professionalism with design: charts, infographics, and visuals to ensure clarity and retention."
                 ),
+                'icon': 'fas fa-file-alt',
                 'image': 'images/services/technical.webp',
                 'faqs': [
                     {"q": "Do you handle academic reports?", "a": "Yes, structured project reports and proposals."},
@@ -116,6 +122,7 @@ class Command(BaseCommand):
                     "I build lightweight and secure desktop apps with clean user interfaces using Python Tkinter/TTK Bootstrap or JavaFX. "
                     "Perfect for offline tools, POS systems, and internal business automation."
                 ),
+                'icon': 'fas fa-desktop',
                 'image': 'images/services/desktop.webp',
                 'faqs': [
                     {"q": "Do your apps work offline?", "a": "Yes, completely standalone executables."},
@@ -130,6 +137,7 @@ class Command(BaseCommand):
                     "I craft digital marketing campaigns powered by psychology and analytics. "
                     "From search optimization and Google Ads to creative video marketing — your brand’s growth becomes measurable and predictable."
                 ),
+                'icon': 'fas fa-bullhorn',
                 'image': 'images/services/digital.webp',
                 'faqs': [
                     {"q": "Do you run ad campaigns?", "a": "Yes, Google Ads, Meta Ads, and LinkedIn campaigns."},
@@ -148,44 +156,62 @@ class Command(BaseCommand):
                     'title': s['title'],
                     'short': s['short'],
                     'long': s['long'],
-                    'icon': 'fa-solid fa-code',
+                    'icon': s['icon'],
                     'image': s['image'],
                     'faqs': s['faqs']
                 }
             )
             self.stdout.write(self.style.SUCCESS(f"{'Created' if created else 'Updated'} service: {service.title}"))
 
-        # Dummy projects
+        
         projects = [
             {
                 'title': 'Capital Trace Website',
                 'description': 'Financial Tracking and Asset recovery services Website.',
-                'image': 'projects/capital.png',
+                'image': 'images/projects/capitaltrace.webp',
                 'link': 'https://www.capitaltrace.net'
             },
             {
-                'title': 'Asset Restitution',
-                'description': 'Scam recovery and Cybersecurity Platform.',
-                'image': 'projects/asset.png',
+                'title': 'Asset Restitution Website',
+                'description': 'Social Media, Investment Scam recovery Solutions and Cybersecurity Platform.',
+                'image': 'images/projects/assetrestitution.webp',
                 'link': 'https://www.assetrestitution.net'
             },
             {
-                'title': 'Price Sentinel',
+                'title': 'JKGS Solutions Website',
+                'description': 'Travel Planning, Visa and Community Services Website.',
+                'image': 'images/projects/jkgssolutions.webp',
+                'link': 'https://www.jkgssolutions.com'
+            },
+            {
+                'title': 'Shekel Coin Blockchain Token',
+                'description': 'Solana network memecoin project with metadata, wallet integration. Built with Solana SPL & TypeScript.',
+                'image': 'images/projects/shekel.webp',
+                'link': 'https://explorer.solana.com/address/EXGbbSvXLDxJv9Dw397pwgmZ4KEL4r65u3VDZ7pixDDS?cluster=devnet'
+            },
+            {
+                'title': 'Price Sentinel Web Application',
                 'description': 'Crypto alert tracker with Django, Celery, and Redis. Notifies users of live market shifts.',
-                'image': 'projects/price-sentinel.png',
+                'image': 'images/projects/pricesentinel.webp',
                 'link': 'https://github.com/kingsleycodes247/price-sentinel'
             },
             {
-                'title': 'JKGS Solutions',
-                'description': 'Travel Planning, Visa and Community Services Website.',
-                'image': 'projects/jkgs.png',
-                'link': 'https://www.jkgssolutions.com'
+                'title': 'Kings Cuisine Restaurant Website',
+                'description': 'Clean and Professional Restaurant Website built with Django, HTML5, CSS3, Bootstrap and JavaScript.',
+                'image': 'images/projects/kings.webp',
+                'link': 'https://kings-cuisine.onrender.com/'
             },
             {
                 'title': 'Akpa Wallet',
                 'description': 'Secure fintech wallet built with Android and Spring Boot backend.',
-                'image': 'projects/akpa-wallet.png',
+                'image': 'images/projects/akpa.webp',
                 'link': 'https://github.com/kingsleycodes247/akpa-wallet'
+            },
+            {
+                'title': 'SMK Inventory System Desktop App',
+                'description': 'Professional Inventory System built with Python Tkinter and TTK Bootstrap, with Real-time email alerts.',
+                'image': 'images/projects/smk.webp',
+                'link': 'https://drive.google.com/drive/folders/1dwQLVGz-UgSzWsURNtt3HtXOGdfAs8gF?usp=drive_link'
             },
         ]
 

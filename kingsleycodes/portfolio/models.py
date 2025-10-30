@@ -57,7 +57,7 @@ class Service(TimestampedModel):
     long = models.TextField(default='description of the service')
     icon = models.CharField(max_length=100, help_text="Use a Lucide icon name or FontAwesome icon class")
     image = models.ImageField(upload_to='services/', blank=True, null=True)
-    faqs = models.JSONField(default=list, blank=True)  # ✅ Added to hold FAQs as a list of dicts
+    faqs = models.JSONField(default=list, blank=True) 
 
     def save(self, *args, **kwargs):
         if not self.slug:
