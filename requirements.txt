@@ -1,9 +1,0 @@
-Django>=4.2
-gunicorn
-whitenoise
-django-environ
-django-crispy-forms
-django-tailwind
-psycopg2
-pillow
-django-ckeditor
