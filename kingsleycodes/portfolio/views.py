@@ -2,14 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.conf import settings
-from .models import Blog, Project, Service
+from .models import Blog, Project, Service, ContactMessage
 from .forms import ContactForm
 
 
 def home(request):
     services = Service.objects.all()
     projects = Project.objects.all()
-    blogs = Blog.objects.order_by('-created_at')[:3]  # show latest blogs on homepage
+    blogs = Blog.objects.order_by('-created_at')[:3]
     context = {
         'services': services,
         'projects': projects,
@@ -38,22 +38,22 @@ def contact(request):
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
+
+            # Save to database
+            ContactMessage.objects.create(name=name, email=email, message=message)
+
+            # Send email
             subject = f'Portfolio message from {name}'
             full_message = f"From: {name} <{email}>\n\n{message}"
             try:
-                send_mail(subject, full_message, settings.DEFAULT_FROM_EMAIL, [settings.EMAIL_HOST_USER])
+                send_mail(subject, full_message, settings.DEFAULT_FROM_EMAIL, [settings.MANAGER_EMAIL])
                 return redirect('contact_success')
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
             except Exception as e:
                 return HttpResponse(f'Error sending email: {e}')
     else:
         form = ContactForm()
 
-    return render(request, 'contact.html', {
-        'form': form,
-        'calendly_link': 'https://calendly.com/kingsleycodes247/30min'
-    })
+    return render(request, 'contact.html', {'form': form, 'calendly_link': 'https://calendly.com/kingsleycodes247/30min'})
 
 def contact_success(request):
     return render(request, 'contact_success.html')
