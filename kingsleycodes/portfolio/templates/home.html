@@ -9,11 +9,14 @@
   <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-16">
     <div class="flex-1 space-y-6">
       <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
-        Engineering the <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 animate-gradient-x">Future</span><br>
+        Engineering the 
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-black via-violet-600 to-black dark:from-indigo-300 dark:via-violet-400 dark:to-fuchsia-400">
+          Future
+        </span><br>
         One Line of Code at a Time
       </h1>
       <p class="text-gray-300 text-lg max-w-xl">
-        I’m <strong>Kingsley Ofoma</strong> — a Software, DevOps & Blockchain Engineer Building Scalable, Intelligent, and Secure Systems That Power The Digital World.
+        I’m <strong class="text-indigo-300">Kingsley Ofoma,</strong> a Software, DevOps & Blockchain Engineer Building Scalable, Intelligent, and Secure Systems That Power The Digital World.
       </p>
       <div class="flex flex-wrap gap-4">
         <a href="https://www.upwork.com/freelancers/~01217e81acabdbc9fa" target="_blank"
@@ -149,7 +152,7 @@
 </section>
 
 <!-- Tech Stack Section -->
-<section id="tech-stack" class="relative bg-gray-950 dark:bg-gray-900 py-20 overflow-hidden">
+<section id="tech-stack" class="relative bg-gray-400 dark:bg-gray-400 py-20 overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/10 via-violet-600/10 to-transparent animate-gradient-x"></div>
 
   <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
@@ -202,20 +205,64 @@
 
 
 
-<!-- Blog -->
-<section class="bg-gray-950 py-24 text-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-12">Latest Blog Insights</h2>
-    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10">
+<!-- Blog Section -->
+<section class="bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white py-24 relative overflow-hidden">
+  <!-- Floating gradient orbs -->
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <div class="absolute top-1/3 left-1/4 w-56 h-56 bg-violet-600/30 rounded-full blur-3xl animate-glow-slow"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-indigo-600/30 rounded-full blur-3xl animate-glow-slow"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl font-bold mb-4">Latest Blog Insights</h2>
+      <p class="text-white dark:text-gray-400 max-w-2xl mx-auto">
+        Explore thoughts, tutorials, and engineering breakdowns on software, DevOps, and blockchain.
+      </p>
+    </div>
+
+    <!-- Blog grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
       {% for blog in blogs %}
-      <div class="rounded-2xl bg-gray-800 hover:bg-violet-900 transition p-6 border border-gray-700 hover:border-violet-400">
-        <h3 class="text-xl font-semibold mb-2">{{ blog.title }}</h3>
-        <p class="text-gray-400 text-sm">{{ blog.summary }}</p>
-      </div>
+      <a href="{% url 'blog_detail' blog.slug %}"
+         class="group block rounded-2xl overflow-hidden bg-gray-800/60 dark:bg-gray-900/60 backdrop-blur-md border border-gray-700 hover:border-violet-500 shadow-md hover:shadow-violet-600/40 transition-all duration-500 transform hover:-translate-y-2"
+         data-aos="zoom-in" data-aos-delay="{{ forloop.counter|add:'1' }}00">
+        
+        {% if blog.image %}
+        <div class="relative h-56 overflow-hidden">
+          <img src="{{ blog.image.url }}" alt="{{ blog.title }}"
+               class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        </div>
+        {% endif %}
+
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2 group-hover:text-violet-400 transition">{{ blog.title }}</h3>
+          <p class="text-gray-400 text-sm mb-4">{{ blog.summary|truncatechars:130 }}</p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span class="flex items-center gap-2">
+              <i data-lucide="clock" class="h-4 w-4"></i>
+              {{ blog.created_at|date:"M d, Y" }}
+            </span>
+            <span class="text-violet-400 font-medium group-hover:underline">Read More →</span>
+          </div>
+        </div>
+      </a>
+      {% empty %}
+      <p class="text-center text-gray-400 col-span-full">No blog posts available yet.</p>
       {% endfor %}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-16" data-aos="fade-up">
+      <a href="{% url 'blog_list' %}" 
+         class="inline-block bg-violet-600 hover:bg-violet-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-violet-500/40 transition-all duration-300">
+        View All Posts
+      </a>
     </div>
   </div>
 </section>
+
 
 <section id="cta" class="relative py-20 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-center text-white overflow-hidden">
   <!-- Floating glow orb -->

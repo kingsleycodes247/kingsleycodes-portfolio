@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'theme',
     'crispy_forms',
     'crispy_tailwind',
-    'ckeditor',
+    "django_ckeditor_5",
     'ckeditor_uploader'
 ]
 
@@ -155,84 +155,22 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST', default='smtp.gmail.com')
 EMAIL_PORT = env.int('EMAIL_PORT', default=587)
 EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=True)
-EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='kingsleycodes247@gmail.com')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='your-smtp-password')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='dreamstechsolutions001@gmail.com')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='smcv vuxi fqls kpun')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='kingsleycodes247@gmail.com')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_CONFIGS = {
+CKEDITOR_5_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_5_CONFIGS = {
     'default': {
-        'skin': 'moono-dark', # Dark theme
-        'toolbar_Custom': [
-            {
-                'name': 'document',
-                'items': ['Source', '-', 'Preview', '-', 'Print']
-            },
-            {
-                'name': 'clipboard',
-                'items': ['Undo', 'Redo', '-', 'Cut', 'Copy', 'Paste', '-', 'Find', 'Replace']
-            },
-            {
-                'name': 'basicstyles',
-                'items': ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat']
-            },
-            {
-                'name': 'paragraph',
-                'items': [
-                    'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
-                    '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'
-                ]
-            },
-            {
-                'name': 'links',
-                'items': ['Link', 'Unlink', 'Anchor']
-            },
-            {
-                'name': 'insert',
-                'items': [
-                    'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'Iframe'
-                ]
-            },
-            {
-                'name': 'styles',
-                'items': ['Format', 'Font', 'FontSize']
-            },
-            {
-                'name': 'colors',
-                'items': ['TextColor', 'BGColor']
-            },
-            {
-                'name': 'tools',
-                'items': ['Maximize', 'ShowBlocks']
-            },
-            '/',
-            {
-                'name': 'code',
-                'items': ['CodeSnippet']
-            },
-        ],
-        'toolbar': 'Custom',
-        'height': 350,
+        'toolbar': ['bold', 'italic', 'link', 'heading', 'numberedList', 'bulletedList', 'blockQuote', 'codeBlock', 'insertImage'],
+        'height': 400,
         'width': '100%',
-        'extraPlugins': ','.join([
-            'codesnippet',  # For code blocks
-            'autogrow',     # Editor grows as you type
-            'widget', 'lineutils', 'clipboard', 'dialog', 'dialogui', 'elementspath'
-        ]),
-        'codeSnippet_theme': 'monokai_sublime',  # Futuristic code syntax theme
-        'removePlugins': 'resize',
-        'autoGrow_onStartup': True,
-        'autoGrow_minHeight': 300,
-        'autoGrow_maxHeight': 800,
-        'contentsCss': [
-            'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
-            'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap',
-            '/static/css/ckeditor-theme.css',  # optional custom style
-        ],
-        'bodyClass': 'prose prose-indigo max-w-none dark:prose-invert font-space',
-    }
+        'image': {
+            'toolbar': ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side'],
+        },
+    },
 }

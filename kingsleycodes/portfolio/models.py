@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 import json
 
 
@@ -28,26 +28,19 @@ class Project(TimestampedModel):
         return self.title
 
 
-class Blog(TimestampedModel):
+class Blog(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
     author = models.CharField(max_length=100, default="Kingsley Ofoma")
-
-    try:
-        content = RichTextField()
-    except ImportError:
-        content = models.TextField()
-
+    content = CKEditor5Field('Content', config_name='default')
     image = models.ImageField(upload_to='blogs/', blank=True, null=True)
     is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
 
 
 class Service(TimestampedModel):

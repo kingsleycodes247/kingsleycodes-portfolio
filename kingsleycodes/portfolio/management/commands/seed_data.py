@@ -14,7 +14,7 @@ class Command(BaseCommand):
                 'short': 'Native Android (Java/Kotlin) and cross-platform (React Native) apps.',
                 'long': (
                     "I design and build mobile applications that combine aesthetics with functionality. "
-                    "From native Android apps written in Kotlin or Java, to cross-platform builds with React Native — "
+                    "From native Android apps written in Kotlin or Java, to cross-platform builds with React Native... "
                     "each solution is crafted for speed, security, and performance. My apps support offline caching, real-time notifications, "
                     "API integrations, and seamless payment systems (Stripe, Mobile Money, Crypto)."
                 ),
@@ -22,7 +22,7 @@ class Command(BaseCommand):
                 'image': 'images/services/mobile.webp',
                 'faqs': [
                     {"q": "Do you build for iOS too?", "a": "While I primarily build for Android, I also create cross-platform apps using React Native that run on both iOS and Android."},
-                    {"q": "Can you integrate in-app purchases?", "a": "Yes — I integrate in-app payments through APIs like Stripe, Flutterwave, or Google Pay."},
+                    {"q": "Can you integrate in-app purchases?", "a": "Yes, I integrate in-app payments through APIs like Stripe, Flutterwave, or Google Pay."},
                     {"q": "Do your apps support offline mode?", "a": "Absolutely. I implement local storage and sync systems so users can still access key features offline."},
                     {"q": "What’s your approach to app security?", "a": "Apps are built with encrypted storage, secure API calls, and modern authentication practices like JWT or OAuth2."},
                     {"q": "Can you deploy to Play Store?", "a": "Yes, I handle app signing, Play Console setup, and publishing for clients."},
@@ -34,17 +34,17 @@ class Command(BaseCommand):
                 'short': 'Full-stack web apps using Django, React, and Tailwind CSS.',
                 'long': (
                     "From landing pages to enterprise systems, I build web applications using modern frameworks like Django, React, and Tailwind CSS. "
-                    "My solutions are scalable, secure, and optimized for SEO and speed — perfect for startups, SaaS platforms, or e-commerce."
+                    "My solutions are scalable, secure, and optimized for SEO and speed... perfect for startups, SaaS platforms, or e-commerce."
                 ),
                 'icon': 'fas fa-laptop-code',
                 'image': 'images/services/web.webp',
                 'faqs': [
-                    {"q": "Do you build APIs too?", "a": "Yes — I build REST and GraphQL APIs with Django REST Framework and integrate them with modern frontends."},
-                    {"q": "Do you handle UI/UX?", "a": "Yes — I use Tailwind and Framer Motion for smooth, modern, and responsive designs."},
+                    {"q": "Do you build APIs too?", "a": "Yes, I build REST and GraphQL APIs with Django REST Framework and integrate them with modern frontends."},
+                    {"q": "Do you handle UI/UX?", "a": "Yes, I use Tailwind and Framer Motion for smooth, modern, and responsive designs."},
                     {"q": "Can you optimize my website speed?", "a": "Definitely. I use caching, minification, and lazy loading for lightning-fast performance."},
                     {"q": "Do you handle domain and hosting?", "a": "Yes, I set up hosting on AWS, Render, or PythonAnywhere, and connect your custom domain."},
                     {"q": "What about CMS integration?", "a": "I integrate headless CMS like Strapi or custom Django Admin dashboards."},
-                    {"q": "Can you migrate my old site?", "a": "Yes — I handle data migration, redesign, and SEO preservation seamlessly."},
+                    {"q": "Can you migrate my old site?", "a": "Yes, I handle data migration, redesign, and SEO preservation seamlessly."},
                 ]
             },
             {
@@ -57,10 +57,10 @@ class Command(BaseCommand):
                 'icon': 'fas fa-cloud',
                 'image': 'images/services/devops.webp',
                 'faqs': [
-                    {"q": "Do you set up CI/CD?", "a": "Yes — I use GitHub Actions, Jenkins, or GitLab CI for automated deployments."},
-                    {"q": "Which clouds do you work with?", "a": "AWS, DigitalOcean, and Render — with scalable Dockerized setups."},
+                    {"q": "Do you set up CI/CD?", "a": "Yes, I use GitHub Actions, Jenkins, or GitLab CI for automated deployments."},
+                    {"q": "Which clouds do you work with?", "a": "AWS, DigitalOcean, and Render... with scalable Dockerized setups."},
                     {"q": "Can you set up monitoring?", "a": "I integrate Prometheus, Grafana, or custom logging dashboards for real-time system visibility."},
-                    {"q": "Do you use Infrastructure as Code?", "a": "Yes — I use Docker Compose and Terraform to ensure repeatable environments."},
+                    {"q": "Do you use Infrastructure as Code?", "a": "Yes, I use Docker Compose and Terraform to ensure repeatable environments."},
                     {"q": "Can you improve deployment times?", "a": "Yes, through build caching and parallel pipelines."},
                     {"q": "What about backups?", "a": "Automated backup routines are included as part of every deployment plan."},
                 ]
@@ -76,11 +76,11 @@ class Command(BaseCommand):
                 'icon': 'fas fa-cube',
                 'image': 'images/services/blockchain.webp',
                 'faqs': [
-                    {"q": "Do you develop smart contracts?", "a": "Yes — primarily on Solana, with experience in Ethereum (Solidity)."},
+                    {"q": "Do you develop smart contracts?", "a": "Yes, primarily on Solana, with experience in Ethereum (Solidity)."},
                     {"q": "Can you integrate wallets?", "a": "Yes, I integrate Phantom, MetaMask, and other major wallets."},
                     {"q": "Do you handle NFT marketplaces?", "a": "Yes, I create minting systems and NFT transaction APIs."},
                     {"q": "What languages do you use?", "a": "Rust (for Solana), Python, and JavaScript for full-stack Web3 integration."},
-                    {"q": "Is it secure?", "a": "Security is top priority — I follow strict encryption and audit-ready standards."},
+                    {"q": "Is it secure?", "a": "Security is top priority... I follow strict encryption and audit-ready standards."},
                     {"q": "Can you build token-based platforms?", "a": "Yes, from tokenomics modeling to exchange-ready implementations."},
                 ]
             },
@@ -96,7 +96,7 @@ class Command(BaseCommand):
                 'image': 'images/services/creative.webp',
                 'faqs': [
                     {"q": "Do you design animated reels?", "a": "Yes, short-form motion graphics optimized for social media."},
-                    {"q": "Can you handle full brand identity?", "a": "Yes — logo, palette, typography, and visual direction."},
+                    {"q": "Can you handle full brand identity?", "a": "Yes, logo, palette, typography, and visual direction."},
                     {"q": "Do you create ads for TikTok/Instagram?", "a": "Yes, dynamic and visually engaging reels."},
                 ]
             },
@@ -104,7 +104,7 @@ class Command(BaseCommand):
                 'title': 'Technical Writing',
                 'short': 'Professional documentation, reports, and proposals.',
                 'long': (
-                    "I write clear, structured, and technically accurate documentation — from software guides to research reports. "
+                    "I write clear, structured, and technically accurate documentation... from software guides to research reports. "
                     "Each piece blends professionalism with design: charts, infographics, and visuals to ensure clarity and retention."
                 ),
                 'icon': 'fas fa-file-alt',
@@ -135,14 +135,14 @@ class Command(BaseCommand):
                 'short': 'Boosting visibility with strategy, content, and precision targeting.',
                 'long': (
                     "I craft digital marketing campaigns powered by psychology and analytics. "
-                    "From search optimization and Google Ads to creative video marketing — your brand’s growth becomes measurable and predictable."
+                    "From search optimization and Google Ads to creative video marketing... your brand’s growth becomes measurable and predictable."
                 ),
                 'icon': 'fas fa-bullhorn',
                 'image': 'images/services/digital.webp',
                 'faqs': [
                     {"q": "Do you run ad campaigns?", "a": "Yes, Google Ads, Meta Ads, and LinkedIn campaigns."},
-                    {"q": "Do you handle SEO?", "a": "Yes — on-page, technical, and content-driven SEO."},
-                    {"q": "Can you create content too?", "a": "Yes — blogs, visuals, and video scripts aligned with your strategy."},
+                    {"q": "Do you handle SEO?", "a": "Yes, on-page, technical, and content-driven SEO."},
+                    {"q": "Can you create content too?", "a": "Yes, blogs, visuals, and video scripts aligned with your strategy."},
                 ]
             },
         ]
@@ -203,13 +203,13 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Akpa Wallet',
-                'description': 'Secure fintech wallet built with Android and Spring Boot backend.',
-                'image': 'images/projects/akpa.webp',
-                'link': 'https://github.com/kingsleycodes247/akpa-wallet'
+                'description': 'Secure Fintech & Crypto android wallet app built with Java and Springboot microservices backend.',
+                'image': 'images/projects/akpa.jpeg',
+                'link': 'https://play.google.com/store/apps?hl=en&gl=US'
             },
             {
-                'title': 'SMK Inventory System Desktop App',
-                'description': 'Professional Inventory System built with Python Tkinter and TTK Bootstrap, with Real-time email alerts.',
+                'title': 'SMK Inventory Desktop App',
+                'description': 'Professional Inventory Management System Desktop App built with Python Tkinter, with Real-time email alerts.',
                 'image': 'images/projects/smk.webp',
                 'link': 'https://drive.google.com/drive/folders/1dwQLVGz-UgSzWsURNtt3HtXOGdfAs8gF?usp=drive_link'
             },

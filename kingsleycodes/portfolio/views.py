@@ -32,7 +32,6 @@ def projects(request):
 
 
 def contact(request):
-    success = False
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -43,18 +42,21 @@ def contact(request):
             full_message = f"From: {name} <{email}>\n\n{message}"
             try:
                 send_mail(subject, full_message, settings.DEFAULT_FROM_EMAIL, [settings.EMAIL_HOST_USER])
-                success = True
+                return redirect('contact_success')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             except Exception as e:
                 return HttpResponse(f'Error sending email: {e}')
     else:
         form = ContactForm()
+
     return render(request, 'contact.html', {
         'form': form,
-        'success': success,
         'calendly_link': 'https://calendly.com/kingsleycodes247/30min'
     })
+
+def contact_success(request):
+    return render(request, 'contact_success.html')
 
 def services(request):
     services = Service.objects.all()

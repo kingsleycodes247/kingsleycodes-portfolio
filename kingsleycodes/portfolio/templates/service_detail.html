@@ -16,7 +16,11 @@
   <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-10">
 
     <!-- Sidebar -->
-    <aside class="md:col-span-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 p-6">
+    <aside 
+      class="md:col-span-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 p-6"
+      data-aos="fade-right" 
+      data-aos-delay="200"
+    >
       <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Other Services</h3>
       <ul class="space-y-2 text-sm">
         {% for s in other_services %}
@@ -33,35 +37,71 @@
     </aside>
 
     <!-- Main content -->
-    <article class="md:col-span-2 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 p-8">
+    <article 
+      class="md:col-span-2 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 p-8"
+      data-aos="fade-up" 
+      data-aos-duration="800"
+    >
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        <a href="{% url 'home' %}" class="hover:text-indigo-500">Home</a> /
+        <a href="{% url 'services' %}" class="hover:text-indigo-500">Services</a> /
+        <span class="text-indigo-400">{{ service.title }}</span>
+      </nav>
+
+      <!-- Service Title -->
       <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{{ service.title }}</h1>
 
+      <!-- Optional Tools Highlight -->
+      {% if service.tools %}
+      <div class="flex flex-wrap gap-3 mb-6" data-aos="fade-left">
+        {% for tool in service.tools %}
+          <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-800/40 text-indigo-600 dark:text-indigo-300 rounded-full text-sm font-medium">
+            {{ tool }}
+          </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Service Image -->
       {% if service.image %}
-      <div class="mb-6">
+      <div class="mb-6" data-aos="zoom-in">
         <img src="{% static service.image %}" alt="{{ service.title }}" class="w-full rounded-xl shadow-md">
       </div>
       {% endif %}
 
+      <!-- Service Description -->
       <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-base mb-8">
         {{ service.long }}
       </p>
 
-     <!-- FAQ Section -->
+      <!-- FAQ Section -->
       {% if service.faqs %}
-        <section>
-          <h2 class="text-2xl font-semibold text-indigo-300 mb-4">FAQs</h2>
-          <div class="space-y-4">
-            {% for faq in service.faqs %}
-              <div class="p-4 rounded-lg bg-black/20 dark:bg-white/10 hover:bg-indigo-700/30 transition">
-                <p class="font-semibold text-indigo-200">Q: {{ faq.q }}</p>
-                <p class="text-gray-200 dark:text-gray-300">A: {{ faq.a }}</p>
+      <section data-aos="fade-up" class="mt-10">
+        <h2 class="text-2xl font-semibold text-indigo-600 dark:text-indigo-300 mb-4">FAQs</h2>
+        <div class="space-y-3">
+          {% for faq in service.faqs %}
+            <div class="faq-item bg-black/10 dark:bg-white/10 rounded-lg overflow-hidden border border-indigo-500/20">
+              <button 
+                class="w-full text-left p-4 font-semibold text-indigo-600 dark:text-indigo-300 flex justify-between items-center"
+                onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180');"
+              >
+                <span>Q: {{ faq.q }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="hidden p-4 text-gray-800 dark:text-gray-300 border-t border-indigo-500/10">
+                A: {{ faq.a }}
               </div>
-            {% endfor %}
-          </div>
-        </section>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
       {% endif %}
 
-      <div class="mt-10">
+      <!-- CTA Button -->
+      <div class="mt-10" data-aos="zoom-in">
         <a href="{% url 'contact' %}"
            class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition shadow-md hover:shadow-indigo-500/40">
           Get in Touch
@@ -71,4 +111,15 @@
 
   </div>
 </section>
+
+<!-- Optional Animation CSS -->
+<style>
+@keyframes glow-slow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.05); }
+}
+.animate-glow-slow {
+  animation: glow-slow 8s ease-in-out infinite;
+}
+</style>
 {% endblock %}
